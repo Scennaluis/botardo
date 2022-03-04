@@ -178,7 +178,7 @@ module.exports = {
           if (!'antiToxic' in chat) chat.antiToxic = false
         } else global.DATABASE._data.chats[m.chat] = {
           isBanned: false,
-          welcome: false, 
+          welcome: true, 
           detect: false,
           sWelcome: "",
           sBye: '',
@@ -289,9 +289,6 @@ module.exports = {
             if (!['unbanchat.js', 'link.js', 'pengumuman.js', 'creator.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
             if (!['unbanuser.js', 'inv.js', 'link.js', 'creator.js', 'profile.js'].includes(name) && user && user.banned && !isROwner) {
               if (!opts['msgifbanned']) m.reply(`*⚠️ ESTAS BANEADO ⚠️* ${user.bannedReason ? `\n*Motivo:* *${user.bannedReason}*` : ''}
-
-*👉🏻 Puedes contactar a Jhusz si crees que esto es un error :v*
-
 ${global.owner.map((v, i) => '*Contacto ' + (i + 1) + ':* wa.me/' + v).join('\n')}
 `.trim())
               return
@@ -338,10 +335,10 @@ ${global.owner.map((v, i) => '*Contacto ' + (i + 1) + ':* wa.me/' + v).join('\n'
 
           m.isCommand = true
           let xp = 'exp' in plugin ? parseInt(plugin.exp) : 15 // XP Earning per command
-          if (xp > 99999999999) m.reply('Ngecit -_-') // Hehehe
+          if (xp > 99999999999) m.reply('XD') // Hehehe
           else m.exp += xp
           if (!isPrems && plugin.limit && global.DATABASE._data.users[m.sender].limit < plugin.limit * 1) {
-            this.reply(m.chat, `*_Su límite para usar este comando ha terminado_*`, m)
+            this.reply(m.chat, `*Tu limite para usar este comando termin��*`, m)
             continue // Limit habis
           }
           let extra = {
@@ -390,7 +387,7 @@ ${global.owner.map((v, i) => '*Contacto ' + (i + 1) + ':* wa.me/' + v).join('\n'
                 console.error(e)
               }
             }
-            if (m.limit) m.reply(+ m.limit + ' *_limite usado, el limite por usuario son de 10, al finalizar con su limite no podra seguir usando los comandos con limites_*')
+            if (m.limit) m.reply(+ m.limit + ' *Pelotudx el limite por usuario es de 10, al finalizar con tu limite no podes seguir usando los comandos con limites*')
           }
           break
         }
@@ -462,9 +459,9 @@ ${global.owner.map((v, i) => '*Contacto ' + (i + 1) + ':* wa.me/' + v).join('\n'
         }
         break
       case 'promote':
-        text = (chat.sPromote || this.spromote || conn.spromote || '@user ```ahora es administrador```')
+        text = (chat.sPromote || this.spromote || conn.spromote || '@user sos admin aprovecha')
       case 'demote':
-        if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```ya no es administrador```')
+        if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ni ahi con giles te saco el admin')
         text = text.replace('@user', '@' + participants[0].split('@')[0])
         if (chat.detect) this.sendMessage(jid, text, MessageType.extendedText, {
           contextInfo: {
@@ -480,11 +477,11 @@ ${global.owner.map((v, i) => '*Contacto ' + (i + 1) + ':* wa.me/' + v).join('\n'
     let chat = global.DATABASE._data.chats[m.key.remoteJid]
     if (chat.delete) return
     await this.reply(m.key.remoteJid, `
-━━━━⬣  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀  ⬣━━━━
-*▢ Nombre:* @${m.participant.split`@`[0]}
-*▢ Enviando el mensaje..*
-*▢ Para desactivar esta función envie el comando:* #disable delete
-━━━━⬣  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀  ⬣━━━━
+━━━━⬄1�7  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀  ⬣━━━┄1�7
+*▄1�7 Nombre:* @${m.participant.split`@`[0]}
+*▄1�7 Enviando el mensaje..*
+*▄1�7 Para desactivar esta función envie el comando:* #disable delete
+━━━━⬄1�7  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀  ⬣━━━┄1�7
 `.trim(), m.message, {
       contextInfo: {
         mentionedJid: [m.participant]
@@ -521,21 +518,21 @@ ${global.owner.map((v, i) => '*Contacto ' + (i + 1) + ':* wa.me/' + v).join('\n'
       
       await this.send(`${tag},${JSON.stringify(NodePayload)}`)
     }
-    await this.sendMessage(from, '*[ ⚠ ️] ️NO LLAMAR AL BOT POR FAVOR, NO QUEREMOS BLOQUEARL@, EVITENOS LA PENA DE HACERLO [ ⚠ ️]*\n\n*❗SI ESTE INCIDENTE SE REPITE USTED SERA BLOQUEAD@❗*', MessageType.extendedText)
+    await this.sendMessage(from, '*[ ⚄1�7 ️] ️NO LLAMAR AL BOT POR FAVOR, NO QUEREMOS BLOQUEARL@, EVITENOS LA PENA DE HACERLO [ ⚄1�7 ️]*\n\n*❗SI ESTE INCIDENTE SE REPITE USTED SERA BLOQUEAD@❄1�7*', MessageType.extendedText)
   }
 }
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: '*[ ⚠ ️] Este comando solo puede ser utilizado por el propietario/owner del Bot*',
-    owner: '*[ ⚠ ️] Este comando solo puede ser utilizado por sub Bots (jadibot/serbot) y el propietario*',
-    mods: '*[ ⚠ ️] Este comando solo puede ser utilizado por moderadores y el propietario/owner del Bot*',
-    premium: '*[ ⚠ ️] Este comando es solo para miembros premium*',
-    group: '*[ ⚠ ️] Este comando solo se puede usar en grupos*',
-    private: '*[ ⚠ ️] Este comando solo se puede usar en el chat privado del numero del Bot*',
-    admin: '*[ ⚠ ️]️ Este comando es solo para administradores del grupo*',
-    botAdmin: '*[ ⚠ ️] Ascender el Bot a admin para usar este comando*',
-    unreg: '*[ ⚠ ️]️ Regístrese para utilizar esta función escribiendo:*\n\n*#registrar nombre.edad*\n\n*Ejemplo:*\n*#registrar Shadow.18*\n\n*Este registro se solicita con el fin de que el Bot no se sature*\n\nNota: No escriba los "*" ni los "_"\n\n*Nota: El registro fue quitado, si algun comando le pide registro favor de reportarlo*'
+    rowner: '*[ ⚄1�7 ️] Este comando solo puede ser utilizado por el propietario/owner del Bot*',
+    owner: '*[ ⚄1�7 ️] Este comando solo puede ser utilizado por sub Bots y el propietario*',
+    mods: '*[ ⚄1�7 ️] Este comando solo puede ser utilizado por moderadores y el propietario/owner del Bot*',
+    premium: '*[ ⚄1�7 ️] Este comando es solo para miembros premium*',
+    group: '*[ ⚄1�7 ️] Este comando solo se puede usar en grupos*',
+    private: '*[ ⚄1�7 ️] Este comando solo se puede usar en el chat privado del numero del Bot*',
+    admin: '*[ ⚄1�7 ️]︄1�7 Este comando es solo para administradores del grupo*',
+    botAdmin: '*[ ⚄1�7 ️] Ascender el Bot a admin para usar este comando*',
+    unreg: '*[ ⚄1�7 ️]︄1�7 Regístrese para utilizar esta función escribiendo:*\n\n*#registrar nombre.edad*\n\n*Ejemplo:*\n*#registrar zorrita.18*\n\n*Este registro se solicita con el fin de que el Bot no se sature*\n\nNota: No escriba los "*" ni los "_"'
   }[type]
   if (msg) return m.reply(msg)
 }
@@ -549,4 +546,3 @@ fs.watchFile(file, () => {
   delete require.cache[file]
   if (global.reloadHandler) console.log(global.reloadHandler())
 })
-
